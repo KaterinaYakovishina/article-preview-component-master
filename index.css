@@ -1,0 +1,202 @@
+* {
+  display: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100dvh;
+  font-family: "Manrope", sans-serif;
+  background-color: var(--light-grayish-blue);
+  font-size: 13px;
+}
+
+:root {
+  --dark-grayish: hsl(217, 19%, 35%);
+  --dark-blue: hsl(214, 17%, 51%);
+  --blue: hsl(212, 23%, 69%);
+  --light-grayish-blue: hsl(210, 46%, 95%);
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  box-shadow: 0 3rem 3rem var(--blue);
+
+  border-radius: 1rem;
+  /* overflow hidden hides popup but without it border-radius doesn't work?... */
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.image {
+  background-image: url(./images/drawers.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 230px;
+  overflow: hidden;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.description>* {
+  padding-inline: 1.5rem;
+  padding-block: 1.5rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.author {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.author-details {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  flex: 1;
+}
+
+#photo {
+  width: 60px;
+  border-radius: 50%;
+}
+
+/* mobile popup */
+.mobile {
+  background-color: var(--dark-grayish);
+  min-height: 60px;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  display: none;
+}
+
+.mobile-share,
+.share,
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  gap: 1.5rem;
+}
+
+.share>p,
+.mobile-share>p {
+  letter-spacing: 1ch;
+}
+
+/* desktop popup */
+.popup {
+  position: absolute;
+  top: 55%;
+  right: -13%;
+  display: flex;
+  justify-content: center;
+}
+
+.share {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid var(--dark-grayish);
+  left: 43%;
+  bottom: -20%;
+}
+
+/* styling*/
+.description {
+  background-color: white;
+}
+
+h2,
+h4 {
+  color: var(--dark-grayish);
+}
+
+p {
+  color: var(--blue);
+}
+
+.popup {
+  background-color: var(--dark-grayish);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  display: none;
+}
+
+.button {
+  border: 6px solid var(--light-grayish-blue);
+  border-radius: 50%;
+  background-color: var(--light-grayish-blue);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: flex-end;
+}
+
+
+.button-active-desktop {
+  border: 6px solid var(--dark-grayish);
+  border-radius: 50%;
+  background-color: var(--dark-grayish);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: flex-end;
+}
+
+.button-active-mobile {
+  border: 6px solid var(--blue);
+  border-radius: 50%;
+  background-color: var(--blue);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: flex-end;
+}
+
+.button>#button {
+  fill: var(--dark-blue);
+}
+
+
+
+@media screen and (max-width: 900px) {
+  main {
+    position: static;
+    margin-top: 2rem;
+    margin-inline: 1.5rem;
+    transform: none;
+
+
+  }
+
+}
