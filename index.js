@@ -1,12 +1,9 @@
 const button = document.querySelector(".button");
 const buttonIcon = document.querySelector("#button");
-// desktop queries
-const popup = document.querySelector(".desktop");
-// mobile queries
-// const description = document.querySelector(".author");//=> gives problems with chidren (*1)
+const desktopPopup = document.querySelector(".desktop");
 const mobilePopup = document.querySelector(".mobile");
-const description = document.querySelector('.author-details')//*1 test
-mobilePopup.style.display = 'none'//*1 test
+const description = document.querySelector('.author-details');
+mobilePopup.style.display = 'none';
 
 const contentTobeReplaced = document.querySelector(".author-details");
 
@@ -19,63 +16,56 @@ choosePopupStyle(mediaQuery);
 function choosePopupStyle() {
     if (mediaQuery.matches) {
         checkTracesDesktop();
-        button.addEventListener('click', toggleAuthorBlockContent);
+        button.addEventListener('click', toggleMobilePopup);
     } else {
         checkTracesMobile();
-        button.addEventListener('click', togglePopup);
+        button.addEventListener('click', toggleDesktopPopup);
 
     }
 }
-// remove previous styles when screensize changes
+// if there's no second click to close popup, removes previous style when screensize changes
 function checkTracesDesktop() {
-    if (button.classList.contains("button-active-desktop")) {
-        makePopupDissapear();
-        button.removeEventListener('click', togglePopup);
-
+    if (desktopPopup.style.display = "flex") {
+        makeDesktopPopupDissapear();
+        button.removeEventListener('click', toggleDesktopPopup);
     }
 }
 function checkTracesMobile() {
-    if (button.classList.contains("button-active-mobile")) {
-        removePopupBlock();
-        button.removeEventListener('click', toggleAuthorBlockContent);
+    if (mobilePopup.style.display = "flex") {
+        removeMobilePopupBlock();
+        button.removeEventListener('click', toggleMobilePopup);
     }
 }
-// mobile design
-function toggleAuthorBlockContent() {
+// swtich to mobile
+function toggleMobilePopup() {
     if (button.classList.contains("button")) {
-        addPopupBlock();
+        addMobilePopupBlock();
     } else {
-        removePopupBlock();
+        removeMobilePopupBlock();
     }
 }
-//desktop design
-function togglePopup() {
+//switch to desktop
+function toggleDesktopPopup() {
     if (button.classList.contains("button")) {
-        makePopupVisible();
+        makeDesktopPopupVisible();
     } else {
-        makePopupDissapear();
+        makeDesktopPopupDissapear();
     }
 }
 
 
 // mobile styling
-function addPopupBlock() {
+function addMobilePopupBlock() {
     mobilePopup.style.display = "flex";
-    // description.replaceChild(mobilePopup, contentTobeReplaced);// *1
-
-    description.style.display = 'none'//*1 test
-
+    description.style.display = 'none'
     button.classList.replace("button", "button-active-mobile");
     buttonIcon.style.fill = "#ffffff";
     document.querySelector(".author").style.backgroundColor =
         "var(--dark-grayish)";
 }
-function removePopupBlock() {
+function removeMobilePopupBlock() {
     mobilePopup.style.display = "none";
-    // description.replaceChild(contentTobeReplaced, mobilePopup); //*1
-
-    description.style.display = 'flex'//*1 test
-
+    description.style.display = 'flex'
     button.classList.replace("button-active-mobile", "button");
     buttonIcon.style.fill = "var(--dark-blue)";
     document.querySelector(".author").style.backgroundColor = "white";
@@ -84,14 +74,14 @@ function removePopupBlock() {
 
 // desktop styling
 
-function makePopupVisible() {
-    popup.style.display = "flex";
+function makeDesktopPopupVisible() {
+    desktopPopup.style.display = "flex";
     button.classList.replace("button", "button-active-desktop");
     buttonIcon.style.fill = "#ffffff";
 }
 
-function makePopupDissapear() {
-    popup.style.display = "none";
+function makeDesktopPopupDissapear() {
+    desktopPopup.style.display = "none";
     button.classList.replace("button-active-desktop", "button")
     buttonIcon.style.fill = "var(--dark-blue)";
 }
